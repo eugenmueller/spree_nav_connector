@@ -15,7 +15,8 @@ module SpreeNavConnector
     end
 
     def self.activate
-      Dir.glob(File.join(File.dirname(__FILE__), '../../app/**/*_decorator*.rb')) do |c|
+      file = File.join(File.dirname(__FILE__), '../../app/**/*_decorator*.rb')
+      Dir.glob(file) do |c|
         Rails.configuration.cache_classes ? require(c) : load(c)
       end
     end
@@ -30,7 +31,7 @@ module SpreeNavConnector
       mattr_accessor :element_form_default
       mattr_accessor :env_namespace
       mattr_accessor :namespace_identifier
-      mattr_accessor :convert_request_keys_to
+      mattr_accessor :request_keys_to
       mattr_accessor :log
       mattr_accessor :log_level
       mattr_accessor :pretty_print_xml
@@ -44,7 +45,7 @@ module SpreeNavConnector
       self.element_form_default = :unqualified
       self.env_namespace = :soap
       self.namespace_identifier = nil
-      self.convert_request_keys_to = :none
+      self.request_keys_to = :none
       self.log = false
       self.log_level = :debug
       self.pretty_print_xml = true

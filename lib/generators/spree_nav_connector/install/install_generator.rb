@@ -1,5 +1,6 @@
 module SpreeNavConnector
   module Generators
+    # Generator class
     class InstallGenerator < Rails::Generators::Base
       class_option :auto_run_migrations, type: :boolean, default: false
 
@@ -21,7 +22,9 @@ module SpreeNavConnector
       end
 
       def add_migrations
-        run 'bundle exec rake railties:install:migrations FROM=spree_nav_connector'
+        run %(
+          bundle exec rake railties:install:migrations FROM=spree_nav_connector
+        )
       end
 
       def run_migrations
