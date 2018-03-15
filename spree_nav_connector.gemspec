@@ -26,6 +26,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'savon'
   s.add_dependency 'spree_core', '>= 3.1.0', '< 4.0'
   s.add_dependency 'spree_extension'
+  s.add_dependency 'virtus'
 
   s.add_development_dependency 'appraisal'
   s.add_development_dependency 'capybara'

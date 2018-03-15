@@ -1,6 +1,6 @@
 module SpreeNavConnector
   module Generators
-    # Generator class
+    # Install generator class
     class InstallGenerator < Rails::Generators::Base
       class_option :auto_run_migrations, type: :boolean, default: false
 
