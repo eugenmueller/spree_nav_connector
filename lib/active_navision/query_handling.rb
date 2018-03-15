@@ -1,6 +1,7 @@
 require 'savon'
 
 module ActiveNavision
+  # query hanlding for active navision
   module QueryHandling
     def find_in_batches(start_key: nil, batch_size: 1000, filter: {})
       batch_relation = self
@@ -36,7 +37,7 @@ module ActiveNavision
     end
 
     def raise_navision_record_not_found_exception!
-      raise NavisionRecordNotFound.new('error', self.class, 'key todo')
+      raise ActiveNavision::NavisionRecordNotFound.new('error', self.class, 'key todo')
     end
   end
 end
