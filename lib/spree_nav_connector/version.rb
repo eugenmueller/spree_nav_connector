@@ -1,3 +1,4 @@
+# Version module
 module SpreeNavConnector
   module_function
 

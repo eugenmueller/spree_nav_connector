@@ -37,7 +37,11 @@ module ActiveNavision
     end
 
     def raise_navision_record_not_found_exception!
-      raise ActiveNavision::NavisionRecordNotFound.new('error', self.class, 'key todo')
+      raise ActiveNavision::NavisionRecordNotFound.new(
+        'error',
+        self.class,
+        'key todo'
+      )
     end
   end
 end

@@ -9,7 +9,7 @@ module ActiveNavision
 
     def initialize(service_url = nil, nav_key = nil, primary_key = nil)
       @service_url = service_url
-      @nav_id = nav_id
+      @nav_key = nav_key
       @primary_key = primary_key
 
       super(message)
