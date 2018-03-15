@@ -18,7 +18,8 @@ module SpreeNavConnector
                          verbose: true
         inject_into_file 'vendor/assets/stylesheets/spree/backend/all.css',
                          " *= require spree/backend/spree_nav_connector\n",
-                         before: %r{\*\/}, verbose: true
+                         before: %r{\*\/},
+                         verbose: true
       end
 
       def add_migrations
@@ -28,18 +29,14 @@ module SpreeNavConnector
       end
 
       def run_migrations
-        run_migrations = options[:auto_run_migrations] || run_migrations_now?
-
+        # rubocop:disable Style/NestedParenthesizedCalls, Metrics/LineLength
+        run_migrations = options[:auto_run_migrations] || ['', 'y', 'Y'].include?(ask 'Would you like to run the migrations now? [Y/n]')
+        # rubocop:enable Style/NestedParenthesizedCalls, Metrics/LineLength
         if run_migrations
           run 'bundle exec rake db:migrate'
         else
           puts 'Skipping rake db:migrate, don\'t forget to run it!'
         end
-      end
-
-      def run_migrations_now?
-        answer = ask 'Would you like to run the migrations now? [Y/n]'
-        ['', 'y', 'Y'].include?(answer)
       end
     end
   end
