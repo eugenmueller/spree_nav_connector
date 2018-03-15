@@ -1,5 +1,4 @@
-# encoding: UTF-8
-lib = File.expand_path('../lib/', __FILE__)
+lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift lib unless $LOAD_PATH.include?(lib)
 
 require 'spree_nav_connector/version'
@@ -15,7 +14,7 @@ Gem::Specification.new do |s|
   s.author    = 'You'
   s.email     = 'you@example.com'
   s.homepage  = 'https://github.com/your-github-handle/spree_nav_connector'
-  s.license = 'BSD-3-Clause'
+  s.license   = 'BSD-3-Clause'
 
   # s.files       = `git ls-files`.split("\n").reject { |f| f.match(/^spec/) && !f.match(/^spec\/fixtures/) }
   s.require_path = 'lib'

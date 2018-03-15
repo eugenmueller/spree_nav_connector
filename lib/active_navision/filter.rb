@@ -1,4 +1,5 @@
 module ActiveNavision
+  # Filter class for Navision SOAP requests
   class Filter
     attr_reader :filters
 

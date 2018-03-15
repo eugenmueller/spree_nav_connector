@@ -24,11 +24,11 @@ guard 'zeus' do
   rspec.spec_helper = "#{rspec.spec_dir}/spec_helper.rb"
 
   # matchers
-  rspec.spec_files = /^#{rspec.spec_dir}\/.+_spec\.rb$/
+  rspec.spec_files = %r{^#{rspec.spec_dir}\/.+_spec\.rb$}
 
   # Ruby apps
   ruby = OpenStruct.new
-  ruby.lib_files = /^(lib\/.+)\.rb$/
+  ruby.lib_files = %r{^(lib\/.+)\.rb$}
 
   watch(rspec.spec_files)
   watch(rspec.spec_helper) { rspec.spec_dir }
@@ -36,8 +36,8 @@ guard 'zeus' do
 
   # Rails example
   rails = OpenStruct.new
-  rails.app_files = /^app\/(.+)\.rb$/
-  rails.views_n_layouts = /^app\/(.+(?:\.erb|\.haml|\.slim))$/
+  rails.app_files = %r{^app\/(.+)\.rb$}
+  rails.views_n_layouts = %r{^app\/(.+(?:\.erb|\.haml|\.slim))$}
   rails.controllers = %r{^app/controllers/(.+)_controller\.rb$}
 
   watch(rails.app_files) { |m| rspec.spec.call(m[1]) }
@@ -49,11 +49,4 @@ guard 'zeus' do
       rspec.spec.call("acceptance/#{m[1]}")
     ]
   end
-
-  # TestUnit
-  # watch(%r|^test/(.*)_test\.rb$|)
-  # watch(%r|^lib/(.*)([^/]+)\.rb$|)     { |m| "test/#{m[1]}test_#{m[2]}.rb" }
-  # watch(%r|^test/test_helper\.rb$|)    { "test" }
-  # watch(%r|^app/controllers/(.*)\.rb$|) { |m| "test/functional/#{m[1]}_test.rb" }
-  # watch(%r|^app/models/(.*)\.rb$|)      { |m| "test/unit/#{m[1]}_test.rb" }
 end

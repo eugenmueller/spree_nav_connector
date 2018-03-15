@@ -18,6 +18,7 @@ require File.expand_path('../dummy/config/environment.rb',  __FILE__)
 require 'rspec/rails'
 require 'database_cleaner'
 require 'ffaker'
+require 'factory_bot'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -32,6 +33,8 @@ require 'spree/testing_support/url_helpers'
 
 # Requires factories defined in lib/spree_nav_connector/factories.rb
 require 'spree_nav_connector/factories'
+
+Dir['shared_examples/**/*.rb'].each { |f| require f }
 
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
@@ -98,5 +101,5 @@ RSpec.configure do |config|
   end
 
   config.fail_fast = ENV['FAIL_FAST'] || false
-  config.order = "random"
+  config.order = 'random'
 end
