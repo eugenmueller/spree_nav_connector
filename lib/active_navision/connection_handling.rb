@@ -1,6 +1,7 @@
 require 'savon'
 
 module ActiveNavision
+  # connection handling module for navision
   module ConnectionHandling
     def client(options = {})
       @client ||= Savon::Client.new(options.merge(global_options))
@@ -12,6 +13,7 @@ module ActiveNavision
       @multiple_result_mapping_keys ||= options
     end
 
+    # rubocop:disable Metrics/MethodLength
     def global_options
       {
         open_timeout:            SpreeNavConnector::Engine.open_timeout,
@@ -21,7 +23,7 @@ module ActiveNavision
           SpreeNavConnector::Engine.username,
           SpreeNavConnector::Engine.password
         ],
-        convert_request_keys_to: SpreeNavConnector::Engine.convert_request_keys_to,
+        convert_request_keys_to: SpreeNavConnector::Engine.request_keys_to,
         namespace_identifier:    SpreeNavConnector::Engine.namespace_identifier,
         element_form_default:    SpreeNavConnector::Engine.element_form_default,
         env_namespace:           SpreeNavConnector::Engine.env_namespace,
@@ -30,6 +32,7 @@ module ActiveNavision
         pretty_print_xml:        SpreeNavConnector::Engine.pretty_print_xml
       }
     end
+    # rubocop:enable Metrics/MethodLength
 
     def operations(*operations)
       operations.each do |operation|

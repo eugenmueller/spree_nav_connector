@@ -3,12 +3,12 @@ require 'savon'
 module ActiveNavision
   # query hanlding for active navision
   module QueryHandling
-    def find_in_batches(start_key: nil, batch_size: 1000, filter: {})
-      batch_relation = self
-      key_offset     = start_key || ''
+    def find_in_batches(start_key: '', batch_size: 1000, filter: {})
+      key_offset = start_key
+
       loop do
         message = build_message(filter, key_offset, batch_size)
-        results = load_flat_multiple_results(batch_relation, message)
+        results = load_flat_multiple_results(self, message)
         break if results.empty?
 
         yield results
