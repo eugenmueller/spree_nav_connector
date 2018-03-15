@@ -13,34 +13,33 @@ module ActiveNavision
       @multiple_result_mapping_keys ||= options
     end
 
-    # rubocop:disable Metrics/MethodLength
+    # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
     def global_options
       {
-        open_timeout:            SpreeNavConnector::Engine.open_timeout,
-        read_timeout:            SpreeNavConnector::Engine.read_timeout,
-        ssl_verify_mode:         SpreeNavConnector::Engine.ssl_verify_mode,
-        ntlm:                    [
-          SpreeNavConnector::Engine.username,
-          SpreeNavConnector::Engine.password
-        ],
-        convert_request_keys_to: SpreeNavConnector::Engine.request_keys_to,
-        namespace_identifier:    SpreeNavConnector::Engine.namespace_identifier,
-        element_form_default:    SpreeNavConnector::Engine.element_form_default,
-        env_namespace:           SpreeNavConnector::Engine.env_namespace,
-        log:                     SpreeNavConnector::Engine.log,
-        log_level:               SpreeNavConnector::Engine.log_level,
-        pretty_print_xml:        SpreeNavConnector::Engine.pretty_print_xml
+        open_timeout:            config.open_timeout,
+        read_timeout:            config.read_timeout,
+        ssl_verify_mode:         config.ssl_verify_mode,
+        ntlm:                    [config.username, config.password],
+        convert_request_keys_to: config.request_keys_to,
+        namespace_identifier:    config.namespace_identifier,
+        element_form_default:    config.element_form_default,
+        env_namespace:           config.env_namespace,
+        log:                     config.log,
+        log_level:               config.log_level,
+        pretty_print_xml:        config.pretty_print_xml
       }
     end
-    # rubocop:enable Metrics/MethodLength
+    # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
     def operations(*operations)
-      operations.each do |operation|
-        create_method(operation)
-      end
+      operations.each { |operation| create_method(operation) }
     end
 
     private
+
+    def config
+      SpreeNavConnector::Engine.config
+    end
 
     def create_method(method_name)
       define_singleton_method method_name.to_s.snakecase do |message|
