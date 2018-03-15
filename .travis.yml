@@ -2,7 +2,12 @@ sudo: required
 dist: trusty
 
 language: ruby
+
 cache: bundler
+
+cache:
+  directories:
+    - /home/travis/.rvm/
 
 env:
   global:
