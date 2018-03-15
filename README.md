@@ -1,6 +1,10 @@
 SpreeNavConnector
 =================
 
+[![Build Status](https://travis-ci.org/eugenmueller/spree_nav_connector.svg?branch=master)](https://travis-ci.org/eugenmueller/spree_nav_connector)
+[![Maintainability](https://api.codeclimate.com/v1/badges/fc3cbcd89affe1b0c38f/maintainability)](https://codeclimate.com/github/eugenmueller/spree_nav_connector/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/fc3cbcd89affe1b0c38f/test_coverage)](https://codeclimate.com/github/eugenmueller/spree_nav_connector/test_coverage)
+
 Introduction goes here.
 
 ## Installation
