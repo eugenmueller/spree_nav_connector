@@ -1,11 +1,10 @@
-sudo: required
+sudo: false
 dist: trusty
 
 language: ruby
 
-cache: bundler
-
 cache:
+  bundler: true
   directories:
     - /home/travis/.rvm/
 
