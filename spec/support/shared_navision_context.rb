@@ -8,7 +8,7 @@ end
 shared_context 'query_context' do
   subject { create_dummy_class }
   let(:service_url) { 'http://example.com' }
-  let(:filter) { ActiveNavision::Filter.new('Partner_ID', 'S*').filters }
+  let(:filter) { ActiveNavision::Filter.new('MY_ID') }
   let(:mapping_keys) { %i[read_multiple_result read_multiple_result partner01_item] }
   let(:message) { build(:message, filter: filter, setSize: 1000).to_h }
   let(:second_message) { build(:message, filter: filter, setSize: 2).to_h }

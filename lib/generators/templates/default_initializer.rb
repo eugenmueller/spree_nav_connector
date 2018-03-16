@@ -4,8 +4,8 @@ SpreeNavConnector::Engine.configure do |config|
   # Example: config.option = 'different_option'
   config.open_timeout            = 5
   config.read_timeout            = 120
-  config.username                = 'username'
-  config.password                = 'password'
+  config.username                = ENV['NAVISION_USER']
+  config.password                = ENV['NAVISION_PWD']
   config.element_form_default    = :unqualified
   config.env_namespace           = :soap
   config.namespace_identifier    = nil
@@ -13,4 +13,11 @@ SpreeNavConnector::Engine.configure do |config|
   config.log                     = false
   config.log_level               = :debug
   config.pretty_print_xml        = true
+
+  # Webservice endpoint configuration attributes
+  config.base_wsdl_url           = 'http://example.com'
+  config.partner_id              = 'S*'
+
+  # Webservice endpoints
+  config.item_service            = 'page/item'
 end

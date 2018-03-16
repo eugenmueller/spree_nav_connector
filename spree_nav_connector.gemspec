@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
+  s.add_dependency 'activerecord-import'
   s.add_dependency 'httpclient'
   s.add_dependency 'httpi'
   s.add_dependency 'rubyntlm'
