@@ -3,6 +3,7 @@ module SpreeNavConnector
     # Install generator class
     class InstallGenerator < Rails::Generators::Base
       class_option :auto_run_migrations, type: :boolean, default: false
+      source_root File.expand_path('../../templates', __dir__)
 
       def add_javascripts
         append_file 'vendor/assets/javascripts/spree/frontend/all.js',
@@ -37,6 +38,14 @@ module SpreeNavConnector
         else
           puts 'Skipping rake db:migrate, don\'t forget to run it!'
         end
+      end
+
+      desc 'Creates SpreNavConnector initializer for your application'
+      def copy_initializer
+        template 'default_initializer.rb',
+                 'config/initializers/spree_nav_connector.rb'
+
+        puts 'Initializer for spree_nav_connector created!'
       end
     end
   end

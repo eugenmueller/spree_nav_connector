@@ -4,6 +4,8 @@ describe ActiveNavision::ConnectionHandling do
   let(:service_url) { 'http://example.com' }
   subject { Class.new { extend ActiveNavision::ConnectionHandling } }
 
+  before { SpreeNavConnector::Engine.configure {} }
+
   it { is_expected.to respond_to :client }
 
   describe '#client' do

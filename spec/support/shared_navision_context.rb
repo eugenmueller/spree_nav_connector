@@ -18,6 +18,7 @@ shared_context 'query_context' do
   let(:response_part2) { build :read_multiple_result, :part_2 }
 
   before do
+    SpreeNavConnector::Engine.configure {}
     subject.client(wsdl: service_url)
     subject.operations :read_multiple
     subject.multiple_result_mapping_keys mapping_keys
