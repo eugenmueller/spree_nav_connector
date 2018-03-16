@@ -20,7 +20,7 @@ module ActiveNavision
         read_timeout:            config.read_timeout,
         ssl_verify_mode:         config.ssl_verify_mode,
         ntlm:                    [config.username, config.password],
-        convert_request_keys_to: config.request_keys_to,
+        convert_request_keys_to: config.convert_request_keys_to,
         namespace_identifier:    config.namespace_identifier,
         element_form_default:    config.element_form_default,
         env_namespace:           config.env_namespace,
