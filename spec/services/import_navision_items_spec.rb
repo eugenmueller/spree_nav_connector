@@ -3,6 +3,8 @@ require 'spec_helper'
 describe ImportNavisionItems do
   subject { described_class }
 
+  it { is_expected.to respond_to :import_all}
+
   describe '#call' do
     let(:response) { build(:read_multiple_result, :default) }
     let(:empty_response) { build(:read_multiple_empty_result) }
@@ -19,7 +21,6 @@ describe ImportNavisionItems do
           .with(anything)
           .and_return(response)
       end
-
       it { expect(result).to respond_to :success? }
       it { expect(result.success?).to be_truthy }
       it { expect(result.error).to be_nil }
