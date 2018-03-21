@@ -14,7 +14,7 @@ module ClassMethods
 
   def import_all
     @spree_navision_model.transaction do
-      @nav_connector_model.find_in_batches(filter: @nav_connector_model.filter) do |group|
+      @nav_connector_model.find_in_batches(filter: filter) do |group|
         group.each { |raw_item| create_or_update_item(raw_item) }
       end
     end
@@ -35,6 +35,10 @@ module ClassMethods
 
   def model_attributes
     @model_attributes ||= @spree_navision_model.attribute_names.map(&:to_sym)
+  end
+
+  def filter
+    @nav_connector_model.filter
   end
 end
 
