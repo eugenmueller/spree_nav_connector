@@ -1,3 +1,4 @@
+# Baser Importer class methods
 module ClassMethods
   def call
     new.call
@@ -37,15 +38,15 @@ module ClassMethods
   end
 end
 
+# base importer instance methods
 module InstanceMethods
   def import_all
     self.class.import_all
   end
 end
 
+# Base importer class
 class BaseImporter
   extend ClassMethods
   include InstanceMethods
-
-  attr_accessor :nav_connector_model, :spree_navision_model
 end

@@ -3,7 +3,6 @@ require 'savon'
 module ActiveNavision
   # query hanlding for active navision
   module QueryHandling
-
     def find_in_batches(batch_size: 1000, filter: {})
       @key_offset = ''
 
