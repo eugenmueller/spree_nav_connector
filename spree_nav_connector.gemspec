@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
+  s.add_dependency 'activerecord-import'
   s.add_dependency 'httpclient'
   s.add_dependency 'httpi'
   s.add_dependency 'rubyntlm'
@@ -42,7 +43,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'guard-rspec'
   s.add_development_dependency 'guard-rubocop'
   s.add_development_dependency 'guard-zeus'
-  s.add_development_dependency 'mysql2'
+  s.add_development_dependency 'mysql2', '0.4.10'
   s.add_development_dependency 'pg'
   s.add_development_dependency 'poltergeist'
   s.add_development_dependency 'pry-rails'

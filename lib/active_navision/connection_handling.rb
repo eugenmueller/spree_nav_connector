@@ -35,11 +35,11 @@ module ActiveNavision
       operations.each { |operation| create_method(operation) }
     end
 
-    private
-
     def config
       SpreeNavConnector::Engine.config
     end
+
+    private
 
     def create_method(method_name)
       define_singleton_method method_name.to_s.snakecase do |message|
